@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CuriousDetailActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_main_title"
+
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:text="Curious"/>
+        <TextView
+            android:id="@+id/text_main_sub_title"
+
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="This is sub Title"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="50"
+        android:progressTint="#000"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <SurfaceView
+            android:id="@+id/camera_detail_forward"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_weight="0"/>
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="How To."/>
+            <TextView
+                android:layout_margin="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The web UI of the IFrame Player player is hidden. Instead, a native UI built on top of Android is used to interact with the player, providing a native experience to the users."
+                />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Today"/>
+            <TextView
+                android:layout_marginLeft="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company name."/>
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Offer"/>
+            <TextView
+                android:layout_marginLeft="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="done : 33"/>
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Review"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
