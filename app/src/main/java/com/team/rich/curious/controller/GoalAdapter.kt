@@ -27,13 +27,16 @@ class GoalAdapter(private val items: ArrayList<Curious>) : RecyclerView.Adapter<
     override fun onBindViewHolder(vh: RecyclerView.ViewHolder, i: Int) {
         val viewHolder = vh as GoalViewHolder
         viewHolder.mView.text_goal_title.text = items[i].name
+        viewHolder.mView.text_goal_provider.text = items[i].contentsProvider.name
         viewHolder.mView.button_main_go.setOnClickListener {
             viewHolder
                 .mView.context
-                .startActivity(Intent(viewHolder.mView.context, CuriousDetailActivity::class.java))
+                .startActivity(Intent(viewHolder.mView.context, CuriousDetailActivity::class.java)
+                    .putExtra("curiousName",items[i].name)
+                    .putExtra("curiousSrc" ,items[i].srcUrl)
+                    .putExtra("providerName",items[i].contentsProvider.name)
+                )
         }
-
-
     }
 
 }

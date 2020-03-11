@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_curious_detail.*
 import java.io.IOException
+import java.lang.RuntimeException
 
 
 class CuriousDetailActivity : AppCompatActivity(), SurfaceHolder.Callback{
@@ -20,13 +21,20 @@ class CuriousDetailActivity : AppCompatActivity(), SurfaceHolder.Callback{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curious_detail)
         supportActionBar?.hide()
-
-        mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT)
-        mCamera!!.setDisplayOrientation(90)
-        // surfaceview setting
-        mCameraHolder = camera_detail_forward.holder
-        mCameraHolder.addCallback(this)
-        mCameraHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)
+        text_curious_detail_title.text = intent.getStringExtra("curiousName")
+        text_curious_detail_sub_title.text = intent.getStringExtra("providerName")
+        you_tube_player_view.play(intent.getStringExtra("curiousSrc")!!)
+        //checkPermissionCamera()
+        try{
+            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT)
+            mCamera!!.setDisplayOrientation(90)
+            // surfaceview setting
+            mCameraHolder = camera_detail_forward.holder
+            mCameraHolder.addCallback(this)
+            mCameraHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)
+        }catch (e : RuntimeException){
+            checkPermissionCamera()
+        }
     }
 
     override fun onStart() {
@@ -54,7 +62,7 @@ class CuriousDetailActivity : AppCompatActivity(), SurfaceHolder.Callback{
     }
 
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
-        if (mCameraHolder.getSurface() == null) {
+        if (mCameraHolder.surface == null) {
             return
         }
         try {
@@ -92,7 +100,7 @@ class CuriousDetailActivity : AppCompatActivity(), SurfaceHolder.Callback{
                 mCamera!!.startPreview()
             }
         } catch (e: IOException) {
-
+            finish()
         }
 
     }
